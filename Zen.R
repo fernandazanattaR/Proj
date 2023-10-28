@@ -1,6 +1,6 @@
 # 1.2 pré-requisitos
 
-install.packages(c("usethis", "renv", "tidyverse")) 
+install.packages(c("usethis", "renv", "tidyverse"))
 install.packages("devtools")
 
 # 3 Caminhos relativos e absolutos
@@ -24,7 +24,7 @@ usethis::create_github_token()
 #>   It is also a great idea to store this token in any password-management software that you use
 #> ✔ Opening URL 'https://github.com/settings/tokens/new?scopes=repo,user,gist,workflow&description=R:GITHUB_PAT'
 #> gitcreds::gitcreds_set()
-#> 
+#>
 #> usethis::create_project("~/Documents/demo")
 #> ✔ Creating '~/Documents/demo/'
 #> ✔ Setting active project to '~/Documents/demo'
@@ -32,7 +32,7 @@ usethis::create_github_token()
 #> ✔ Writing 'demo.Rproj'
 #> ✔ Adding '.Rproj.user' to '.gitignore'
 #> ✔ Opening '~/Documents/demo/' in new RStudio session
-#> ✔ Setting active project to 'demo' 
+#> ✔ Setting active project to 'demo'
 
 # No console do novo projeto
 
@@ -44,40 +44,40 @@ usethis::use_git()
 #> * '.gitignore'
 #> * 'demo.Rproj'
 #> Is it ok to commit them?
-#> 
+#>
 #> 1: Negative
 #> 2: Not now
 #> 3: I agree
-#> 
+#>
 #> Selection: 3
 #> ✔ Adding files
 #> ✔ Commit with message 'Initial commit'
 #> ● A restart of RStudio is required to activate the Git pane
 #> Restart now?
-#> 
+#>
 #> 1: Absolutely not
 #> 2: No way
 #> 3: Yes
-#> 
+#>
 #> Selection: 3
 
 usethis::use_github()
 #> ✔ Checking that current branch is 'master'
-#> Which git protocol to use? (enter 0 to exit) 
-#> 
+#> Which git protocol to use? (enter 0 to exit)
+#>
 #> 1: ssh   <-- presumes that you have set up ssh keys
 #> 2: https <-- choose this if you don't have ssh keys (or don't know if you do)
-#> 
+#>
 #> Selection: 2
 #> ● Check title and description
 #>   Name:        demo
-#>   Description: 
+#>   Description:
 #> Are title and description ok?
-#> 
+#>
 #> 1: Nope
 #> 2: No way
 #> 3: Yup
-#> 
+#>
 #> Selection: 3
 #> ✔ Creating GitHub repository
 #> ✔ Setting remote 'origin' to 'https://github.com/curso-r/demo.git'
