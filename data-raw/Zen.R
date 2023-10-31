@@ -146,5 +146,12 @@ base_arrumada <- base_suja |>
     )
   )
 
+# para alteração da forma da data para dmy #
+
+planilha910 |>
+  dplyr::mutate(data_da_decisao=lubridate::dmy(data_da_decisao))
+
+usethis::
+
 
 
