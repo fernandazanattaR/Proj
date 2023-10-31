@@ -36,6 +36,9 @@ usethis::create_github_token()
 
 # No console do novo projeto
 
+# add o token
+gitcreds::gitcreds_set()
+
 usethis::use_git()
 #> ✔ Setting active project to '~/Documents/demo'
 #> ✔ Initialising Git repo
@@ -83,3 +86,65 @@ usethis::use_github()
 #> ✔ Setting remote 'origin' to 'https://github.com/curso-r/demo.git'
 #> ✔ Pushing 'master' branch to GitHub and setting remote tracking branch
 #> ✔ Opening URL 'https://github.com/curso-r/demo'
+
+############################## fim até capítulo 4####
+
+library(dplyr)
+library(tidyverse)
+tidyverse_update()
+library(tidyverse)
+
+ggplot2::mpg
+
+#template gráfico geral#
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+
+#template gráfico customizado#
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+
+#importar planilha#
+library(readr)
+planilha910 <- read_csv("planilha910.csv")
+View(planilha910)
+
+#planilha nessa forma só se tiver poucas opções#
+ggplot(data = planilha) +
+  geom_bar(mapping = aes(x = resultado))
+
+#bem interessante esse tipo de planilha#
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+
+# data transformation #
+# Para selecionar colunas usar select()
+select()
+
+# tidy
+base_arrumada <- base_suja |>
+  dplyr::mutate(
+    resultado = dplyr::if_else(
+      condition = (fundamento == "5.2" & motivo == "inclusão da União de ofício" & oncologico),
+      true = "Turma diferencia os casos em que o oncológico está padronizado",
+      false = NA_character_
+    ),
+    resultado = dplyr::if_else(
+      condition = (fundamento == "5.2" & motivo == "inclusão da União de ofício" & !oncologico),
+      true = "Turma não faz diferença entre os casos em que o oncológico está padronizado",
+      false = NA_character_
+    ),
+    resultado = dplyr::case_when(
+      (fundamento == "5.2" & motivo == "inclusão da União de ofício" & oncologico) ~ "Turma diferencia os casos em que o oncológico está padronizado",
+      (fundamento == "5.2" & motivo == "inclusão da União de ofício" & !oncologico) ~ "Turma não faz diferença entre os casos em que o oncológico está padronizado",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa"
+    )
+  )
+
+
+
