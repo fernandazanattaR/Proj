@@ -135,9 +135,9 @@ base_arrumada <- base_suja |>
       false = NA_character_
     ),
     resultado = dplyr::case_when(
-      (fundamento == "5.2" & motivo == "inclusão da União de ofício" & oncologico) ~ "Turma diferencia os casos em que o oncológico está padronizado",
-      (fundamento == "5.2" & motivo == "inclusão da União de ofício" & !oncologico) ~ "Turma não faz diferença entre os casos em que o oncológico está padronizado",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
+      (resultado == "declinada" & fundamento == "5.1" & motivo == "repartição de competência") ~ "Declianda por Repartição de Competência",
+      (resultado == "mantida" & fundamento == "5.1" & motivo == "repartição de competência") ~ "Mantida por Repartição de Competência",
+      (resultado == "mantida" & fundamento == "5.1" & motivo == "compete à União o ressarcimento administrativo") ~ "Compete à União o ressarcimento administrativo",
       (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
       (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
       (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
