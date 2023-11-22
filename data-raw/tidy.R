@@ -68,6 +68,20 @@ base_arrumada |>
 base_arrumada |>
   dplyr::count(resultado)
 
+  # Medicamentos #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(motivo, fundamento, resultado)
+
 
 
 
