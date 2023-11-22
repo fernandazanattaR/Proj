@@ -11,13 +11,69 @@ base_original <- Proj::base_original
 base_arrumada <- base_original
 
 #minha arrumação começa aqui#
+# minha 1a opção #
+  base_arrumada |>
+  dplyr::count(prestação, resultado)
 
-  dplyr::group_by(base_arrumada, prestação)
-  dplyr::count(base_arrumada, prestação == "procedimento de alta complexidade hospitalar", resultado)
-  -
-  dplyr::arrange(
-    prestação
-  )
+# minha 2a opção #
+  base_arrumada |>
+    dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+    dplyr::count(resultado)
+
+# então definitivo começa aqui #
+  # filtragem por prestação #
+  # Procedimento de alta complexidade hospitalar #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+  dplyr::count(motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar" & motivo == "repartição de competência") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+  dplyr::count(motivo, fundamento, resultado)
+
+  # Procedimentos não padronizados #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(motivo, fundamento, resultado)
+
+  # Atendimento médico domiciliar ou Home Care #
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(motivo, fundamento, resultado)
+
+  # Filtro de exclusão #
+base_arrumada |>
+  dplyr::count(resultado)
+
+
+
+
+  ggplot (data = base_arrumada)
+    geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
+
 ------
   dplyr::mutate(
     resultado = dplyr::if_else(
