@@ -85,11 +85,39 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial" & tipo == "Acórdão") |>
   dplyr::count(orgao_julgador, resultado)
 base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União no polo passivo por determinação do juízo") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União no polo passivo por determinação do juízo" & resultado == "mantida") |>
+  dplyr::count(orgao_julgador, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "segurança jurídica") |>
+  dplyr::count(orgao_julgador, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "segurança jurídica") |>
+  dplyr::count(orgao_julgador, tipo, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "vedação de declinação da competência") |>
+  dplyr::count(orgao_julgador, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "vedação de declinação da competência") |>
+  dplyr::count(orgao_julgador, tipo, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & fundamento == "tema 1234 visa evitar deslocamentos") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & fundamento == "tema 1234 visa evitar deslocamentos") |>
+  dplyr::count(orgao_julgador, tipo, resultado, data_da_decisao)
+
+# medicamento total #
+base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(motivo, fundamento, resultado) |>
   print(n = 21)
 
+# ˆˆtentar entender o que aconteceu nas linhas 19/21 da última análise #
 
+# Aqui começa a análise dos oncológicos #
 
   ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
