@@ -77,15 +77,21 @@ base_arrumada |>
   dplyr::count(motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial") |>
-  dplyr::count(resultado)
+  dplyr::count(motivo, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(orgao_julgador, tipo, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial" & tipo == "Acórdão") |>
+  dplyr::count(orgao_julgador, resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
-  dplyr::count(motivo, fundamento, resultado)
+  dplyr::count(motivo, fundamento, resultado) |>
+  print(n = 21)
 
 
 
-
-  ggplot (data = base_arrumada)
+  ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
 
 ------
