@@ -25,18 +25,27 @@ base_arrumada <- base_original
   # Procedimento de alta complexidade hospitalar #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+  dplyr::count(justiça)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-  dplyr::count(motivo)
+  dplyr::count(fundamento)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar" & motivo == "repartição de competência") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
   dplyr::count(motivo, fundamento, resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar" & motivo == "repartição de competência") |>
+  dplyr::count(orgao_julgador, resultado)
 
   # Procedimentos não padronizados #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(justiça)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(resultado)
@@ -53,6 +62,9 @@ base_arrumada |>
   # Atendimento médico domiciliar ou Home Care #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(justiça)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
@@ -66,9 +78,12 @@ base_arrumada |>
 
   # Filtro de exclusão #
 base_arrumada |>
-  dplyr::count(resultado)
+  dplyr::count(exclusão)
 
   # Medicamentos #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(justiça)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(resultado)
@@ -118,9 +133,24 @@ base_arrumada |>
 # ˆˆtentar entender o que aconteceu nas linhas 19/21 da última análise #
 
 # Aqui começa a análise dos oncológicos #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
+  dplyr::count(justiça)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "mantida") |>
+  dplyr::count(resultado, fundamento, motivo)
+##no resultado do de cima verificar 1) ressarc//adm, 2) grupo 1a, 3) por det do juízo##
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "declinada") |>
+  dplyr::count(resultado, fundamento, motivo)
+##no resultado do de cima verificar os 22 casos NA##
 
-  ggplot (data = base_arrumada) |>
+ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
+
 
 ------
   dplyr::mutate(
