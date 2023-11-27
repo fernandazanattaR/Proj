@@ -147,6 +147,10 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "declinada") |>
   dplyr::count(resultado, fundamento, motivo)
 ##no resultado do de cima verificar os 22 casos NA##
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
+  dplyr::count(motivo, resultado, fundamento)
+###add orgao_julgador###
 
 ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
