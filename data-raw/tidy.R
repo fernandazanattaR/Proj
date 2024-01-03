@@ -31,7 +31,7 @@ base_arrumada |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-  dplyr::count(fundamento)
+  dplyr::count(fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar" & motivo == "repartição de competência") |>
   dplyr::count(resultado)
@@ -151,6 +151,11 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(motivo, resultado, fundamento)
 ###add orgao_julgador###
+
+##apenas usada para teste, não vai ficar##
+base_arrumada |>
+  dplyr::filter(fundamento == "tema 1234 visa evitar deslocamentos") |>
+  dplyr::count(fundamento, resultado, motivo)
 
 ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
