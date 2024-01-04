@@ -128,9 +128,9 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(motivo, fundamento, resultado) |>
-  print(n = 21)
+  print(n = 26)
 
-# ˆˆtentar entender o que aconteceu nas linhas 19/21 da última análise #
+# ˆˆtentar entender o que aconteceu nas linhas 13/26 da última análise #
 
 # Aqui começa a análise dos oncológicos #
 base_arrumada |>
@@ -156,6 +156,11 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(fundamento == "tema 1234 visa evitar deslocamentos") |>
   dplyr::count(fundamento, resultado, motivo)
+
+base_arrumada |>
+  dplyr::filter(motivo == "repartição de competência") |>
+  dplyr::count(motivo, fundamento, resultado, processo) |>
+  print(n = 120)
 
 ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
