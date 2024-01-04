@@ -8,7 +8,7 @@ link <- "https://docs.google.com/spreadsheets/d/1As6YTSzYW1-wMp8COhXtMAXuoG1Perf
 
 #passo 3: baixar a base de dados#
 
-meses <- c(4:lubridate::month(lubridate::today()))
+meses <- c(4:12)
 #
 base_original <- tibble::tibble()
 #
@@ -39,7 +39,3 @@ for(mes in meses) {
 #passo 4: salvar#
 
 usethis::use_data(base_original,overwrite = TRUE)
-
-
-
-
