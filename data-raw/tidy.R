@@ -26,6 +26,12 @@ base_arrumada <- base_original
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
   dplyr::count(justiça)
+    #para entender o resultado NA=10#
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
+  dplyr::count(justiça == "NA", processo) |>
+  print(n=154)
+  # CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
   dplyr::count(resultado)
@@ -46,23 +52,46 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(justiça)
+    #para entender o resultado NA=4#
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(justiça == "NA", processo) |>
+  print(n=47)
+# CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(motivo)
+    #para entender o resultado NA=2#
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(motivo == "NA", processo) |>
+  print(n=47)
+# CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado" & motivo == "inclusão da União por emenda à inicial") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(motivo, fundamento, resultado)
+    #para entender o resultado NA=2#
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado") |>
+  dplyr::count(motivo == "NA", processo) |>
+  print(n=47)
 
   # Atendimento médico domiciliar ou Home Care #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
   dplyr::count(justiça)
+    #para entender o resultado NA=2#
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(justiça == "NA", processo) |>
+  print(n=32)
+# CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
   dplyr::count(resultado)
@@ -79,17 +108,30 @@ base_arrumada |>
   # Filtro de exclusão #
 base_arrumada |>
   dplyr::count(exclusão)
+## VER COMO EXCLUIR NESSE CASO OS NA PQ N INTERESSA##
 
   # Medicamentos #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(justiça)
+#para entender o resultado NA=34#
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(justiça == "NA", processo) |>
+  print(n=1119)
+# CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(motivo)
+#para entender o resultado NA=60#
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento") |>
+  dplyr::count(motivo == "NA", processo) |>
+  print(n=1126)
+# CONTINUA NORMAL DAQUI #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & motivo == "inclusão da União por emenda à inicial") |>
   dplyr::count(motivo, resultado)
@@ -111,6 +153,11 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & motivo == "segurança jurídica") |>
   dplyr::count(orgao_julgador, tipo, resultado)
+#
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & motivo == "segurança jurídica") |>
+  dplyr::count(orgao_julgador, tipo, resultado, processo)
+#
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & motivo == "vedação de declinação da competência") |>
   dplyr::count(orgao_julgador, resultado)
@@ -157,10 +204,16 @@ base_arrumada |>
   dplyr::filter(fundamento == "tema 1234 visa evitar deslocamentos") |>
   dplyr::count(fundamento, resultado, motivo)
 
+## me faz achar que os resultados estão saindo duplicados ##
 base_arrumada |>
-  dplyr::filter(motivo == "repartição de competência") |>
+  dplyr::count(fundamento)
+base_arrumada |>
+  dplyr::count(processo)
+
+base_arrumada |>
+  dplyr::filter(motivo == "sentenciado") |>
   dplyr::count(motivo, fundamento, resultado, processo) |>
-  print(n = 120)
+  print(n = 244)
 
 ggplot (data = base_arrumada) |>
     geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
