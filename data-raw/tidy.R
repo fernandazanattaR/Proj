@@ -43,48 +43,89 @@ base_arrumada |>
     # Quais os fundamentos e motivos das decisões e seus quantitativos? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-  dplyr::count(fundamento, motivo)
+  dplyr::count(resultado, fundamento, motivo)
     # Quais os fundamentos e motivos das decisões e seus quantitativos CONFORME ÓRGÃO JULGADOR? # #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-  dplyr::count(fundamento, motivo, orgao_julgador)
+  dplyr::count(fundamento, motivo, orgao_julgador) |>
+  print(n=21)
     # Como decide a 5a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
-    ###para descobrir o declinada 5.2 proposta contra a U###
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA", tipo =="Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo)
+    ###foi um teste que mantive só para mostrar o resultado NA na coluna processo, o q n faz sentido###
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo, processo)
-    #olha o resultado n13 desse acima, n faz sentido#
+    #olha o resultado n12 desse acima, n faz sentido#
     # CONTINUA NORMAL DAQUI #
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=24)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "SEXTA TURMA", tipo =="Acórdão") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 9a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "NONA TURMA", tipo =="Acórdão") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 10a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "DÉCIMA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "DÉCIMA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "DÉCIMA TURMA", tipo =="Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo)
     # Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 3a TRSC? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -114,7 +155,7 @@ base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(justiça, processo) |>
   print(n=61)
-    ###resultado n47 n faz sentido###
+    ###resultado n35,47 n faz sentido###
     # CONTINUA NORMAL DAQUI #
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
@@ -124,12 +165,6 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
   dplyr::count(motivo)
-    ###tem 6 processos com NA no número contabilizados### NA=2#
-base_arrumada |>
-  dplyr::filter(prestação == "procedimento não padronizado") |>
-  dplyr::count(motivo == "NA", processo) |>
-  print(n=47)
-    # CONTINUA NORMAL DAQUI #
     # Quais os fundamentos e motivos das decisões e seus quantitativos CONFORME ÓRGÃO JULGADOR? # #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
@@ -138,17 +173,26 @@ base_arrumada |>
     # Como decide a 5a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo)
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "QUINTA TURMA", tipo =="Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo)
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "SEXTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo)
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "SEXTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "SEXTA TURMA", tipo == "Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo, tipo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
     ### linha 7 oncológico em PNP? verificar planilha ###
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "SEXTA TURMA") |>
@@ -157,12 +201,24 @@ base_arrumada |>
     # Como decide a 9a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "NONA TURMA", tipo == "Acórdão") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 10a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "DÉCIMA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -172,8 +228,14 @@ base_arrumada |>
     # Como decide a 3a TRSC? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -222,26 +284,44 @@ base_arrumada |>
     # Como decide a 5a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo)
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
+  dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA", tipo == "Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo)
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "SEXTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "SEXTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "SEXTA TURMA", tipo == "Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo)
     # Como decide a 9a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "NONA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo)
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo, tipo)
     # Como decide a 10a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "DÉCIMA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -251,8 +331,14 @@ base_arrumada |>
     # Como decide a 3a TRSC? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -280,6 +366,10 @@ base_arrumada |>
   dplyr::count(justiça)
 
   # 4.1 Medicamentos Não oncológicos #
+    #Quantas?#
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
+  dplyr::count(prestação)
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
@@ -296,28 +386,47 @@ base_arrumada |>
     # Como decide a 5a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
-  print(n=70)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=71)
     # Como decide a 6a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "SEXTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 9a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "NONA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "NONA TURMA", tipo == "Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=39)
     # Como decide a 10a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "DÉCIMA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "DÉCIMA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
+  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "DÉCIMA TURMA", tipo == "Acórdão") |>
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
   print(n=56)
     # Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -327,9 +436,15 @@ base_arrumada |>
   print(n=27)
     # Como decide a 3a TRSC? #
 base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
@@ -391,19 +506,15 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(resultado)
-    # Quais os fundamentos e motivos das decisões e seus quantitativos, nos casos em que foram mantidas? #
+    # Quais os fundamentos e motivos das decisões e seus quantitativos #
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "mantida") |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(resultado, fundamento, motivo)
     ### para ver esse resultado de duas ações com mantida e inclusão da união no polo passivo por determinação do juízo, estranho###
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "mantida" & motivo == "inclusão da União no polo passivo por determinação do juízo") |>
   dplyr::count(resultado, fundamento, motivo, processo)
     # CONTINUA NORMAL AQUI #
-    # Quais os fundamentos e motivos das decisões e seus quantitativos, nos casos em que foram declinadas?
-base_arrumada |>
-  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & resultado == "declinada") |>
-  dplyr::count(resultado, fundamento, motivo)
     # Quais os fundamentos e motivos das decisões e seus quantitativos CONFORME ÓRGÃO JULGADOR? - confuso, provavelmente n usarei # #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
@@ -412,45 +523,65 @@ base_arrumada |>
     # Como decide a 5a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
-  print(n=81)
-    # CONTINUA NORMAL DAQUI #
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=85)
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "SEXTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "SEXTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
-  print(n=89)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=93)
     # Como decide a 9a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "NONA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "NONA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
-  print(n=159)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=165)
     # Como decide a 10a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "DÉCIMA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "DÉCIMA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, data_da_decisao) |>
-  print(n=59)
+  dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
+  print(n=61)
    # Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 3a TRSC? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
   dplyr::count(resultado, fundamento, motivo)
     # Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
