@@ -269,7 +269,7 @@ base_arrumada |>
   dplyr::count(exclusão)
 ## os NA são os que foram extraídos dados de conteúdo, objeto de análise##
 
-  # 4 Medicamentos #
+  # 4 Medicamentos - Geral#
     # Quantas? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
@@ -278,15 +278,11 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento") |>
   dplyr::count(justiça)
-    ###para entender o resultado NA=16, o q n entendo é 185 sem numero do processo###
-base_arrumada |>
-  dplyr::filter(prestação == "medicamento") |>
-  dplyr::count(justiça == "NA", processo) |>
-  print(n=1119)
-    # CONTINUA NORMAL DAQUI #
+
+  # 4.1 Medicamentos Não oncológicos #
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento") |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
   dplyr::count(resultado)
     # Quais os fundamentos e motivos das decisões e seus quantitativos? #
 base_arrumada |>
