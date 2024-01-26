@@ -21,7 +21,7 @@ base_arrumada <- base_original
     dplyr::count(resultado)
 
 # então definitivo começa aqui, COM FILTRAGEM POR PRESTAÇÃO #
-  # 1 Procedimento de alta complexidade hospitalar #
+# 1 Procedimento de alta complexidade hospitalar #
     # Quantas? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
@@ -30,12 +30,6 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
   dplyr::count(justiça)
-    ### para entender o resultado NA=4 ###
-base_arrumada |>
-  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-  dplyr::count(justiça, processo) |>
-  print(n=156)
-    # CONTINUA NORMAL DAQUI #
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
@@ -62,12 +56,6 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA", tipo =="Acórdão") |>
   dplyr::count(resultado, fundamento, motivo)
-    ###foi um teste que mantive só para mostrar o resultado NA na coluna processo, o q n faz sentido###
-base_arrumada |>
-  dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo, processo)
-    #olha o resultado n12 desse acima, n faz sentido#
-    # CONTINUA NORMAL DAQUI #
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "SEXTA TURMA") |>
@@ -519,8 +507,11 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(fundamento, motivo, orgao_julgador) |>
-  print(n=35)
-    # Como decide a 5a Turma? #
+  ggplot2::ggplot() +
+  ggplot2::aes(x = n, fill = motivo, y = orgao_julgador) +
+  ggplot2::geom_col(position="dodge2")
+
+# Como decide a 5a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado)
@@ -585,9 +576,21 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado, fundamento, motivo) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = fundamento, fill = resultado, y = motivo) +
+  ggplot2::geom_col()
 
 
 ##apenas usada para teste, não vai ficar##
+ggplot2::ggplot() +
+  ggplot2::aes(x = fundamento, fill = resultado, y = motivo) +
+  ggplot2::geom_col()
+
+
+
 base_arrumada |>
   dplyr::filter(fundamento == "tema 1234 visa evitar deslocamentos") |>
   dplyr::count(fundamento, resultado, motivo)
