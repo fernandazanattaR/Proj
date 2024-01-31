@@ -508,8 +508,9 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(fundamento, motivo, orgao_julgador) |>
   ggplot2::ggplot() +
-  ggplot2::aes(x = n, fill = motivo, y = orgao_julgador) +
-  ggplot2::geom_col(position="dodge2")
+  ggplot2::aes(x = orgao_julgador, fill = motivo, y = n) +
+  ggplot2::geom_col(position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired")
 
 # Como decide a 5a Turma? #
 base_arrumada |>
