@@ -59,6 +59,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -93,6 +94,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -111,6 +113,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
@@ -139,6 +142,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 6ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -176,6 +180,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 9ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -212,6 +217,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 10ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -248,6 +254,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 1ª TRPR") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -284,6 +291,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª TRRS") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -346,9 +354,10 @@ base_arrumada |>
     # Quais os fundamentos e motivos das decisões e seus quantitativos? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento não padronizado") |>
-  dplyr::count(resultado, motivo)|>
+  dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -383,6 +392,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -415,6 +425,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -454,6 +465,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -486,6 +498,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 10ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -514,10 +527,12 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 1ª TRPR") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
   ggplot2::geom_label(label.size = 0, size = 3, show.legend = FALSE,
                       position=ggplot2::position_dodge2(width=0.80)
   )
@@ -551,6 +566,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -614,9 +630,10 @@ base_arrumada |>
     # Quais os fundamentos e motivos das decisões e seus quantitativos? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
-  dplyr::count(resultado, motivo)|>
+  dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -650,6 +667,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 5ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -682,6 +700,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -706,6 +725,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo, tipo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -748,6 +768,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
@@ -809,7 +830,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
@@ -822,10 +843,11 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
-  dplyr::count(resultado, motivo)|>
+  dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
+  ggplot2::facet_wrap(~fundamento) +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
@@ -845,7 +867,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 5ª Turma") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
@@ -858,7 +880,8 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 5ª Turma") +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
@@ -877,7 +900,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 6ª Turma") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 6ª Turma") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
