@@ -30,6 +30,7 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(fundamento, motivo, orgao_julgador) |>
   ggplot2::ggplot() +
+  ggplot2::facet_wrap(~orgao_julgador) +
   ggplot2::aes(x = n, fill = motivo, y = orgao_julgador) +
   ggplot2::geom_col(position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired")
@@ -54,10 +55,12 @@ base_arrumada |>
   ggplot2::geom_col(width = 0.80,
     position=ggplot2::position_dodge2(0.2)) +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::scale_y_continuous(breaks = seq(0, 300, by = 50)) +
   ggplot2::scale_fill_brewer(palette = "Paired") +
-  ggplot2::geom_label(label.size = 0, size = 2,
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
     position=ggplot2::position_dodge2(width=0.80)
   )
+
 
 #acima só tirar o width=0.40#
 
