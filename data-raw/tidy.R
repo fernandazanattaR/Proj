@@ -34,7 +34,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
           position=ggplot2::position_dodge2(width=0.80)
@@ -47,7 +46,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
           position=ggplot2::position_dodge2(width=0.80)
@@ -61,7 +59,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -82,7 +79,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -96,7 +92,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -108,13 +103,15 @@ base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA") |>
   dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao)
 
+  #n sei se compensa fazer só de acórdão como ABAIXO#
+
 base_arrumada |>
   dplyr::filter(prestação == "procedimento de alta complexidade hospitalar", orgao_julgador == "QUINTA TURMA", tipo =="Acórdão") |>
   dplyr::count(resultado, fundamento, motivo) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -130,7 +127,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -144,7 +140,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -168,7 +163,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -182,7 +176,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -205,7 +198,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -219,7 +211,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -242,7 +233,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -256,7 +246,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, show.legend = FALSE,
@@ -279,7 +268,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -293,7 +281,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento de alta complexidade hospitalar - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -325,7 +312,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -359,7 +345,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -380,7 +365,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -394,7 +378,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -413,7 +396,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -427,7 +409,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -453,7 +434,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -467,7 +447,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -486,7 +465,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -500,7 +478,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -515,7 +492,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -529,7 +505,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -554,7 +529,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -568,7 +542,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -602,7 +575,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -621,7 +593,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -635,7 +606,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -655,7 +625,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -669,7 +638,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -688,7 +656,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -702,7 +669,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -727,7 +693,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -770,7 +735,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
