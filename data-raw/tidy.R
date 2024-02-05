@@ -776,7 +776,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamentos") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -795,7 +794,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -812,7 +810,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -832,7 +829,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -846,7 +842,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -865,7 +860,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -881,8 +875,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 6ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -896,8 +889,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -910,8 +902,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -929,8 +920,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 10ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -943,8 +933,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -962,8 +951,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 1ª TRPR") +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -976,8 +964,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 1ª TRPR") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -999,8 +986,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 3ª TRSC") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 3ª TRSC") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1015,21 +1001,20 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª TRRS") +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
+
 base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos não oncológicos - 3ª TRSC") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 3ª TRSC") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1094,7 +1079,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -1107,7 +1091,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(position="dodge2", fill="#2078B4") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -1121,7 +1104,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1146,7 +1128,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -1160,7 +1141,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 5ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1179,7 +1159,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -1193,7 +1172,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 6ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1212,7 +1190,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -1226,7 +1203,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 9ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1245,7 +1221,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -1259,7 +1234,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 10ª Turma") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1278,7 +1252,6 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
@@ -1292,7 +1265,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 1ª TRPR") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1318,7 +1290,6 @@ base_arrumada |>
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico - 5ª TRRS") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
