@@ -10,18 +10,6 @@ base_original <- Proj::base_original
 
 base_arrumada <- base_original
 
-#minha arrumação começa aqui#
-# minha 1a opção #
-  base_arrumada |>
-  dplyr::count(prestação, resultado)
-
-
-# minha 2a opção #
-  base_arrumada |>
-    dplyr::filter(prestação == "procedimento de alta complexidade hospitalar") |>
-    dplyr::count(resultado)
-
-# então definitivo começa aqui, COM FILTRAGEM POR PRESTAÇÃO #
 # 1 Procedimento de alta complexidade hospitalar #
     # Quantas? #
 base_arrumada |>
@@ -668,7 +656,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 6ª Turma") +
+  ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 6ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -692,7 +680,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 9ª Turma") +
+  ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 9ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -734,7 +722,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
+  ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 5ª TRRS") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -755,7 +743,7 @@ base_arrumada |>
   dplyr::count(exclusão)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = exclusão, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado - 5ª TRRS") +
+  ggplot2::labs(y = "Quantitativo", title = "Sem análise de competência") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
@@ -933,7 +921,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 10ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1014,7 +1002,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 3ª TRSC") +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª TRRS") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1136,7 +1124,7 @@ base_arrumada |>
 
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE", orgao_julgador == "QUINTA TURMA") |>
-  dplyr::count(resultado, fundamento, motivo) |>
+  dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
@@ -1320,49 +1308,6 @@ base_arrumada |>
   dplyr::count(motivo, fundamento, resultado, processo) |>
   print(n = 244)
 
-#
-ggplot (data = base_arrumada) |>
-    geom_bar(mapping = aes(x = resultado, y = prestação, color = orgao_julgador))
-#
-ggplot(base_arrumada, aes(Sepal.Length, Sepal.Width, colour = Species)) + geom_point()
-# esse abaixo deu certo #
-ggplot(base_arrumada, aes(x = justiça)) +
-         geom_bar()
-
-# funcionou colorido #
-ggplot(base_arrumada, aes(x = orgao_julgador, fill = justiça)) +
-  geom_bar(mapping = aes(x = origem))
-
-ggplot(data = base_arrumada) +
-  geom_bar(mapping = aes(x = orgao_julgador, fill = justiça), position = "dodge")
-
-ggplot(data = base_arrumada, mapping = aes(x = justiça, fill = orgao_julgador)) +
-  geom_bar()
-------
-  dplyr::mutate(
-    resultado = dplyr::if_else(
-      condition = (fundamento == "5.2" & motivo == "inclusão da União de ofício" & oncologico),
-      true = "Turma diferencia os casos em que o oncológico está padronizado",
-      false = NA_character_
-    ),
-    resultado = dplyr::if_else(
-      condition = (fundamento == "5.2" & motivo == "inclusão da União de ofício" & !oncologico),
-      true = "Turma não faz diferença entre os casos em que o oncológico está padronizado",
-      false = NA_character_
-    ),
-    resultado = dplyr::case_when(
-      (resultado == "declinada" & fundamento == "5.1" & motivo == "repartição de competência") ~ "Declianda por Repartição de Competência",
-      (resultado == "mantida" & fundamento == "5.1" & motivo == "repartição de competência") ~ "Mantida por Repartição de Competência",
-      (resultado == "mantida" & fundamento == "5.1" & motivo == "compete à União o ressarcimento administrativo") ~ "Compete à União o ressarcimento administrativo",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa",
-      (fundamento == "5.1" & motivo == "XXXX") ~ "Outra coisa"
-    )
-  )
-
-#  dyplr::
 
 #passo 3: salvar base arrumada#
 

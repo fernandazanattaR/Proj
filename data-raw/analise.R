@@ -45,7 +45,7 @@ base_arrumada |>
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
   ggplot2::scale_fill_brewer(palette = "Paired")
 
-# também funcionou girando os nomes, mas acho que fica mais difícil de visualizar #
+# também funcionou girando os nomes, esse ficou bom #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "TRUE") |>
   dplyr::count(fundamento, motivo, orgao_julgador) |>
