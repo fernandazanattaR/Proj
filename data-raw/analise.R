@@ -64,5 +64,69 @@ base_arrumada |>
 
 #acima só tirar o width=0.40#
 
+
+## artigo conpedi ##
+#totalidade de ocorrências#
+base_arrumada |>
+  dplyr::count()
+
+#do total x tiveram análise da competência#
+base_arrumada |>
+  dplyr::filter(exclusão == "matéria diversa" | exclusão == "não analisou" | exclusão == "situação anterior" | exclusão == "sobrestou") |>
+  dplyr::count(exclusão) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = exclusão, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Motivo da ausência de análise", title = "Sem análise da competência") +
+  ggplot2::geom_col(width = 0.80, fill="#2078B4",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+#dos que tiveram análise de competência - a origem #
+base_arrumada |>
+  dplyr::filter(exclusão == "não") |>
+  dplyr::count(justiça)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = justiça, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Origem das demandas") +
+  ggplot2::geom_col(width = 0.80, fill="#2078B4",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+#quantos foram declinadas e quantas foram mantidas#
+base_arrumada |>
+  dplyr::filter(exclusão == "não") |>
+  dplyr::count(resultado)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Análise da competência") +
+  ggplot2::geom_col(width = 0.80, fill="#2078B4",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+
+
+
+
+#Origem#
+base_arrumada |>
+  dplyr::filter(exclusão == "não") |>
+  dplyr::count(justiça) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = justiça, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Origem das demandas") +
+  ggplot2::geom_col(width = 0.80, fill="#2078B4",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+
+
 # PARA ATUALIZAR TOKEN #
 gitcreds::gitcreds_set()
