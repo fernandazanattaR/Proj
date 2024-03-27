@@ -72,13 +72,14 @@ base_arrumada |>
 
 #do total x tiveram análise da competência#
 base_arrumada |>
-  dplyr::filter(exclusão == "matéria diversa" | exclusão == "não analisou" | exclusão == "situação anterior" | exclusão == "sobrestou") |>
+  dplyr::filter(exclusão == "matéria diversa" | exclusão == "não analisou" | exclusão == "situação anterior" | exclusão == "sobrestou" | exclusão == "indisponível para consulta") |>
   dplyr::count(exclusão) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = exclusão, y = n, label = n) +
   ggplot2::labs(y = "Quantitativo", x = "Motivo da ausência de análise", title = "Sem análise da competência") +
   ggplot2::geom_col(width = 0.80, fill="#2078B4",
                     position="dodge2") +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=25, hjust=1)) +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
@@ -108,6 +109,11 @@ base_arrumada |>
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
+#testes#
+base_arrumada |>
+  dplyr::filter(prestação == "procedimento padronizado" & motivo == "proposta contra a União") |>
+  dplyr::count(processo, motivo) |>
+  print(n=51)
 
 # PARA ATUALIZAR TOKEN #
 gitcreds::gitcreds_set()
