@@ -111,8 +111,8 @@ base_arrumada |>
   )
 #testes#
 base_arrumada |>
-  dplyr::filter(prestação == "procedimento padronizado" & motivo == "proposta contra a União") |>
-  dplyr::count(processo, motivo) |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE" & fundamento == "5.2" & motivo == "inclusão da União no polo passivo por determinação do juízo" & resultado == "mantida") |>
+  dplyr::count(processo, fundamento, data_da_decisao) |>
   print(n=51)
 
 # PARA ATUALIZAR TOKEN #

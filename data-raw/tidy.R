@@ -636,12 +636,6 @@ base_arrumada |>
                       position=ggplot2::position_dodge2(width=0.80)
   )
 
-    ###acabei encontrando 2 resultados sem n do processo###
-base_arrumada |>
-  dplyr::filter(prestação == "Atendimento médico domiciliar") |>
-  dplyr::count(justiça == "NA", processo) |>
-  print(n=32)
-    # CONTINUA NORMAL DAQUI #
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar") |>
@@ -785,12 +779,12 @@ base_arrumada |>
   dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
   dplyr::count(resultado)
 base_arrumada |>
-  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
-  dplyr::count(resultado, fundamento, motivo)|>
+  dplyr::filter(prestação == "atendimento médico domiciliar", orgao_julgador == "QUINTA TURMNA RECURSAL") |>
+  dplyr::count(resultado, fundamento, motivo, tipo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Atendimento médico domiciliar - 5ª TRRS") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Atendimento médico domiciliar - 5ª TRRS") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -831,7 +825,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamentos") +
+  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamentos") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -843,18 +837,31 @@ base_arrumada |>
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
   dplyr::count(prestação)
+# Qual a origem dessas ações? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
+  dplyr::count(justiça)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = justiça, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamentos") +
+  ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
     # Quantas declinadas e quantas mantidas? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
   )
+
     # Quais os fundamentos e motivos das decisões e seus quantitativos? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE") |>
@@ -864,7 +871,7 @@ base_arrumada |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico") +
   ggplot2::facet_wrap(~fundamento) +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
@@ -884,7 +891,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 5ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
