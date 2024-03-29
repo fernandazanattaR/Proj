@@ -913,16 +913,26 @@ base_arrumada |>
   )
 
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "QUINTA TURMA") |>
+  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE" & orgao_julgador == "QUINTA TURMA" & motivo == "inclusão da União por emenda à inicial") |>
   dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
-  print(n=71)
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = data_da_decisao, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~resultado) +
+  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
     # Como decide a 6a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "SEXTA TURMA") |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 6ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 6ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -938,7 +948,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 6ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 6ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -952,7 +962,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 9ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -965,7 +975,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 9ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 9ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -983,7 +993,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 10ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 10ª Turma") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -996,7 +1006,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 10ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 10ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1008,13 +1018,30 @@ base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE", orgao_julgador == "DÉCIMA TURMA", tipo == "Acórdão") |>
   dplyr::count(resultado, fundamento, motivo, tipo, data_da_decisao) |>
   print(n=56)
+
+    # Como decide a 11ª Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "DÉCIMA PRIMEIRA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 11ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+
     # Como decide a 1a TRPR? #
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" & oncológico == "FALSE", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 1ª TRPR") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 1ª TRPR") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -1027,7 +1054,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 1ª TRPR") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 1ª TRPR") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1049,7 +1076,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 3ª TRSC") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 3ª TRSC") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1077,7 +1104,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento não oncológico - 5ª TRRS") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 5ª TRRS") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -1141,7 +1168,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamento oncológico") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -1153,7 +1180,7 @@ base_arrumada |>
   dplyr::count(resultado)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento oncológico") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -1166,7 +1193,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Medicamento oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento oncológico") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +

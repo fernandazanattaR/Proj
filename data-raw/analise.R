@@ -111,9 +111,14 @@ base_arrumada |>
   )
 #testes#
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento" & oncológico == "FALSE" & fundamento == "5.2" & motivo == "inclusão da União no polo passivo por determinação do juízo" & resultado == "mantida") |>
+  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & fundamento == "5.2" & motivo == "inclusão da União no polo passivo por determinação do juízo" & resultado == "mantida") |>
   dplyr::count(processo, fundamento, data_da_decisao) |>
   print(n=51)
+
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE" & orgao_julgador == "QUINTA TURMA" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(resultado, processo, tipo, data_da_decisao) |>
+  print(n=22)
 
 # PARA ATUALIZAR TOKEN #
 gitcreds::gitcreds_set()
