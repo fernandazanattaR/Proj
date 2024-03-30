@@ -400,7 +400,7 @@ base_arrumada |>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", title = "Procedimento não padronizado") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Procedimento não padronizado") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
