@@ -116,7 +116,7 @@ base_arrumada |>
   print(n=51)
 
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE" & orgao_julgador == "QUINTA TURMA" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::filter(prestação == "medicamento"  & oncológico == "TRUE" & orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR" & motivo == "repartição de competência") |>
   dplyr::count(resultado, processo, tipo, data_da_decisao) |>
   print(n=22)
 
