@@ -259,14 +259,14 @@ base_arrumada |>
   dplyr::filter(prestação == "procedimento padronizado", orgao_julgador == "DÉCIMA TURMA", tipo =="Acórdão") |>
   dplyr::count(resultado, fundamento, motivo)
 
-# Como decide a 10a Turma? #
+# Como decide a 11a Turma? #
 base_arrumada |>
   dplyr::filter(prestação == "procedimento padronizado", orgao_julgador == "DÉCIMA PRIMEIRA TURMA") |>
   dplyr::count(resultado, fundamento, motivo)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
   ggplot2::facet_wrap(~fundamento) +
-  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Procedimento padronizado - 10ª Turma") +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Procedimento padronizado - 11ª Turma") +
   ggplot2::geom_col(width = 0.80,
                     position="dodge2") +
   ggplot2::scale_fill_brewer(palette = "Paired") +
@@ -368,7 +368,7 @@ base_arrumada |>
   dplyr::count(justiça) |>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Procedimento não padronizado") +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Procedimento não padronizado") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -630,7 +630,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Atendimento médico domiciliar") +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Atendimento médico domiciliar") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -825,7 +825,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamentos") +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Medicamentos") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -843,7 +843,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamentos") +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Medicamentos") +
   ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
                     position="dodge2") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
@@ -1168,7 +1168,7 @@ base_arrumada |>
   dplyr::count(justiça)|>
   ggplot2::ggplot() +
   ggplot2::aes(x = justiça, y = n, label = n) +
-  ggplot2::labs(y = "Quantitativo", x = "Justiça", title = "Medicamento oncológico") +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Medicamento oncológico") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
                       position=ggplot2::position_dodge2(width=0.80)
@@ -1432,6 +1432,196 @@ base_arrumada |>
   dplyr::filter(fundamento == "tema 1234 visa evitar deslocamentos") |>
   dplyr::count(fundamento, resultado, motivo)
 
+    # 6 INSUMOS #
+# Quantas? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo") |>
+  dplyr::count(prestação)
+# Qual a origem dessas ações? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo") |>
+  dplyr::count(justiça)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = justiça, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Origem", title = "Insumo") +
+  ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Quantas declinadas e quantas mantidas? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo") |>
+  dplyr::count(resultado) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo") +
+  ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Quais os fundamentos e motivos das decisões e seus quantitativos? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, label = n, fill = motivo) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 5a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "QUINTA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 5ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 6a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "SEXTA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 6ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 9a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "NONA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 9ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 10a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 10ª Turma") +
+  ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "DÉCIMA TURMA") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 10ª Turma") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 11a Turma? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "DÉCIMA PRIMEIRA TURMA") |>
+  dplyr::count(resultado)
+#sem resultado
+
+# Como decide a 1a TRPR? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 1ª TRPR") +
+  ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR") |>
+  dplyr::count(resultado, fundamento, motivo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 1ª TRPR") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+# Como decide a 3a TRSC? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "TERCEIRA TURMA RECURSAL DE SC") |>
+  dplyr::count(resultado)
+
+# Como decide a 5a TRRS? #
+base_arrumada |>
+  dplyr::filter(prestação == "insumo", orgao_julgador == "QUINTA TURMA RECURSAL DO RS") |>
+  dplyr::count(resultado, fundamento, motivo, tipo)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Insumo - 5ª TRRS") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+### talvez n sejam mais úteis esses resultados ###
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar" & motivo == "inclusão da União por emenda à inicial") |>
+  dplyr::count(resultado)
+base_arrumada |>
+  dplyr::filter(prestação == "atendimento médico domiciliar") |>
+  dplyr::count(motivo, fundamento, resultado)
+
+# Filtro de exclusão #
+base_arrumada |>
+  dplyr::count(exclusão)|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = exclusão, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", title = "Sem análise de competência") +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle=45, hjust=1)) +
+  ggplot2::geom_col(width = 0.80, fill="#A5CEE3",
+                    position="dodge2") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+## os NA são os que foram extraídos dados de conteúdo, objeto de análise##
+######################
 ## me faz achar que os resultados estão saindo duplicados ##
 base_arrumada |>
   dplyr::count(fundamento)
