@@ -109,10 +109,13 @@ base_arrumada |>
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
-#testes#
+#aqui encontrei quanto de cada prestação#
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" | prestação == "procedimento padronizado" | prestação == "procedimento não padronizado" | prestação == "atendimento médico domiciliar" | prestação == "insumo") |>
   dplyr::count(prestação)
+#aqui encontrei quanto de cada prestação mais os NA que engloba os não analisados e os sem prestação#
+base_arrumada |>
+  dplyr::count (prestação)
 
 base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "TRUE" & orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR" & motivo == "repartição de competência") |>
