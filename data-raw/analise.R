@@ -109,6 +109,7 @@ base_arrumada |>
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
+#testes#
 #aqui encontrei quanto de cada prestação#
 base_arrumada |>
   dplyr::filter(prestação == "medicamento" | prestação == "procedimento padronizado" | prestação == "procedimento não padronizado" | prestação == "atendimento médico domiciliar" | prestação == "insumo") |>
