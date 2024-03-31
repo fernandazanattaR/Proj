@@ -111,9 +111,8 @@ base_arrumada |>
   )
 #testes#
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento" & oncológico == "TRUE" & fundamento == "5.2" & motivo == "inclusão da União no polo passivo por determinação do juízo" & resultado == "mantida") |>
-  dplyr::count(processo, fundamento, data_da_decisao) |>
-  print(n=51)
+  dplyr::filter(prestação == "medicamento" | prestação == "procedimento padronizado" | prestação == "procedimento não padronizado" | prestação == "atendimento médico domiciliar" | prestação == "insumo") |>
+  dplyr::count(prestação)
 
 base_arrumada |>
   dplyr::filter(prestação == "medicamento"  & oncológico == "TRUE" & orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR" & motivo == "repartição de competência") |>
