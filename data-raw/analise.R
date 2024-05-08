@@ -109,6 +109,33 @@ base_arrumada |>
   ggplot2::geom_label(label.size = 0, size = 3, fill="#2078B4",
                       position=ggplot2::position_dodge2(width=0.80)
   )
+
+# 3ª Seção #
+base_arrumada |>
+  dplyr::filter(orgao_julgador == "TERCEIRA SEÇÃO") |>
+  dplyr::count(motivo) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = motivo, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "3ª Seção - Motivo") +
+  ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+base_arrumada |>
+  dplyr::filter(orgao_julgador == "TERCEIRA SEÇÃO") |>
+  dplyr::count(exclusão) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = exclusão, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "3ª Seção - Ausência de análise") +
+  ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+#sobrestou count#
+base_arrumada |>
+  dplyr::filter(orgao_julgador == "TERCEIRA SEÇÃO" & exclusão == "sobrestou") |>
+  dplyr::count(processo)
+
 #testes#
 #aqui encontrei quanto de cada prestação#
 base_arrumada |>
@@ -119,9 +146,15 @@ base_arrumada |>
   dplyr::count (prestação)
 
 base_arrumada |>
-  dplyr::filter(prestação == "medicamento"  & oncológico == "TRUE" & orgao_julgador == "PRIMEIRA TURMA RECURSAL DO PR" & motivo == "repartição de competência") |>
-  dplyr::count(resultado, processo, tipo, data_da_decisao) |>
-  print(n=22)
+  dplyr::filter(orgao_julgador == "TERCEIRA SEÇÃO") |>
+  dplyr::count(exclusão) |>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = exclusão, y = n, label = n) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "3ª Seção - Ausência de análise") +
+  ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
+  ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
 
 # PARA ATUALIZAR TOKEN #
 gitcreds::gitcreds_set()
