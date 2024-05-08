@@ -136,6 +136,12 @@ base_arrumada |>
   dplyr::filter(orgao_julgador == "TERCEIRA SEÇÃO" & exclusão == "sobrestou") |>
   dplyr::count(processo)
 
+#decisões díspares da 5TRRS padronizado 5.2#
+base_arrumada |>
+  dplyr::filter(orgao_julgador == "QUINTA TURMA RECURSAL DO RS" & fundamento == "5.2" & prestação == "procedimento padronizado") |>
+  dplyr::count(fundamento, rel, data_da_decisao)
+
+
 #testes#
 #aqui encontrei quanto de cada prestação#
 base_arrumada |>
@@ -153,6 +159,22 @@ base_arrumada |>
   ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "3ª Seção - Ausência de análise") +
   ggplot2::geom_col(position="dodge2", fill="#A5CEE3") +
   ggplot2::geom_label(label.size = 0, size = 3, fill="#A5CEE3",
+                      position=ggplot2::position_dodge2(width=0.80)
+  )
+
+base_arrumada |>
+  dplyr::filter(prestação == "medicamento"  & oncológico == "FALSE" & motivo == "vedação de declinação da competência" & orgao_julgador == "VICE-PRESIDÊNCIA") |>
+  dplyr::count(resultado, processo, motivo)
+
+|>
+  ggplot2::ggplot() +
+  ggplot2::aes(x = resultado, y = n, fill = motivo, label = n) +
+  ggplot2::facet_wrap(~fundamento) +
+  ggplot2::labs(y = "Quantitativo", x = "Resultado", title = "Medicamento não oncológico - 5ª TRRS") +
+  ggplot2::geom_col(width = 0.80,
+                    position="dodge2") +
+  ggplot2::scale_fill_brewer(palette = "Paired") +
+  ggplot2::geom_label(label.size = 0, size = 2, show.legend = FALSE,
                       position=ggplot2::position_dodge2(width=0.80)
   )
 
